@@ -80,10 +80,7 @@
     </div>
 
 <script>
-        // Ton URL Supabase (même URL que pour Python, mais sans les paramètres de fin)
         const SUPABASE_URL = "https://tldixozxuuutqcgvtqvy.supabase.co/rest/v1/commandes?id=eq.1";
-        
-        // Ta clé Publishable Supabase
         const SUPABASE_KEY = "sb_publishable_9pPrAO06CE0rgAjrhUzDkg_kCAFd6GB";
 
         async function lancerLive() {
@@ -108,17 +105,20 @@
                 if (response.ok) {
                     alert(`Ordre envoyé : Lancer ${channel} !`);
                 } else {
-                    alert("Erreur lors de l'envoi.");
+                    // Affiche l'erreur exacte renvoyée par Supabase dans la console
+                    let errorText = await response.text();
+                    console.error("Erreur Supabase :", errorText);
+                    alert("Erreur lors de l'envoi. Regarde la console (F12) pour les détails.");
                 }
             } catch (error) {
-                console.error("Erreur:", error);
+                console.error("Erreur réseau:", error);
                 alert("Impossible de joindre l'API.");
             }
         }
 
         async function fermerLive() {
             try {
-                await fetch(SUPABASE_URL, {
+                let response = await fetch(SUPABASE_URL, {
                     method: 'PATCH',
                     headers: {
                         'apikey': SUPABASE_KEY,
@@ -128,9 +128,16 @@
                     },
                     body: JSON.stringify({ action: 'fermer', channel: '' })
                 });
-                alert("Ordre de fermeture envoyé au PC !");
+
+                if (response.ok) {
+                    alert("Ordre de fermeture envoyé au PC !");
+                } else {
+                    let errorText = await response.text();
+                    console.error("Erreur Supabase :", errorText);
+                    alert("Erreur lors de l'envoi. Regarde la console (F12).");
+                }
             } catch (error) {
-                console.error("Erreur:", error);
+                console.error("Erreur réseau:", error);
             }
         }
     </script>

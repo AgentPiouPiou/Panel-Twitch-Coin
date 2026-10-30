@@ -1,3 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panneau Twitch Mobile</title>
+    <style>
+        body { 
+            background: #0e0e10; 
+            color: #efeff1; 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+        }
+        h1 { 
+            color: #9146ff; 
+            margin-bottom: 25px;
+        }
+        .card { 
+            background: #18181b; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        input[type="text"] { 
+            width: 90%; 
+            padding: 12px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            border: 1px solid #303032; 
+            background: #0e0e10; 
+            color: white; 
+            margin-bottom: 15px; 
+            text-align: center; 
+            box-sizing: border-box;
+        }
+        button { 
+            background: #9146ff; 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100%; 
+        }
+        button:hover { 
+            background: #772ce8; 
+        }
+        .btn-danger { 
+            background: #eb0400; 
+        }
+        .btn-danger:hover { 
+            background: #b80300; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Panneau Twitch</h1>
+    
+    <div class="card">
+        <h3>Lancer un live</h3>
+        <input type="text" id="channelInput" placeholder="Nom de la chaîne (ex: mastu)">
+        <button onclick="lancerLive()">Lancer le live</button>
+    </div>
+
+    <div class="card">
+        <h3>Contrôle</h3>
+        <button class="btn-danger" onclick="fermerLive()">Fermer Firefox / Stop</button>
+    </div>
+
 <script>
         // Ton URL Supabase (même URL que pour Python, mais sans les paramètres de fin)
         const SUPABASE_URL = "https://tldixozxuuutqcgvtqvy.supabase.co/rest/v1/commandes?id=eq.1";
@@ -53,3 +134,6 @@
             }
         }
     </script>
+
+</body>
+</html>
